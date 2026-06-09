@@ -55,3 +55,174 @@
 2026-06-09 09:56:36,432 [INFO]   Quality checks passed:   7/7
 2026-06-09 09:56:36,432 [INFO]   Duration:                7.9s
 2026-06-09 09:56:36,432 [INFO] ============================================================
+2026-06-09 10:37:05,185 [INFO] Generated website CSV: 1020 records
+2026-06-09 10:37:05,279 [INFO] Generated CRM JSON: 500 records
+2026-06-09 10:37:05,312 [INFO] Generated ERP fixed-width: 250 records
+2026-06-09 10:37:05,313 [INFO] Synthetic data generation complete.
+2026-06-09 10:37:05,313 [INFO] ============================================================
+2026-06-09 10:37:05,313 [INFO] SHOPSTREAM CUSTOMER DATA QUALITY PIPELINE
+2026-06-09 10:37:05,313 [INFO] Run started: 2026-06-09T10:37:05.313727
+2026-06-09 10:37:05,313 [INFO] ============================================================
+2026-06-09 10:37:05,313 [INFO] ============================================================
+2026-06-09 10:37:05,314 [INFO] STEP 1: Data Ingestion
+2026-06-09 10:37:05,314 [INFO] Ingesting website CSV: data\raw\website_customers.csv
+2026-06-09 10:37:05,359 [INFO]   Removed 20 test accounts
+2026-06-09 10:37:05,361 [INFO]   Ingested 1000 records from website CSV
+2026-06-09 10:37:05,363 [INFO] Ingesting CRM JSON: data\raw\crm_export.json
+2026-06-09 10:37:05,377 [INFO]   Ingested 500 records from CRM JSON
+2026-06-09 10:37:05,381 [INFO] Ingesting ERP fixed-width: data\raw\erp_customers.txt
+2026-06-09 10:37:05,397 [INFO]   Ingested 250 records from ERP
+2026-06-09 10:37:05,400 [INFO] Total records combined: 1750
+2026-06-09 10:37:05,407 [INFO]   website: 1000 records
+2026-06-09 10:37:05,407 [INFO]   crm: 500 records
+2026-06-09 10:37:05,408 [INFO]   erp: 250 records
+2026-06-09 10:37:05,408 [INFO] STEP 2: Cleaning & Standardization
+2026-06-09 10:37:05,435 [INFO]   Invalid emails: 7
+2026-06-09 10:37:05,435 [INFO]   Null regions after standardization: 271
+2026-06-09 10:37:05,435 [INFO]   Records after cleaning: 1750
+2026-06-09 10:37:05,435 [INFO] STEP 3: Deduplication
+2026-06-09 10:37:06,828 [INFO]   Records before deduplication: 1750
+2026-06-09 10:37:06,828 [INFO]   Duplicate records removed: 1032
+2026-06-09 10:37:06,828 [INFO]   Records after deduplication: 718
+2026-06-09 10:37:06,828 [INFO] STEP 4: Quality Validation
+2026-06-09 10:37:06,837 [INFO] ============================================================
+2026-06-09 10:37:06,837 [INFO] DATA QUALITY REPORT
+2026-06-09 10:37:06,837 [INFO] ============================================================
+2026-06-09 10:37:06,837 [INFO]   [PASS] NOT NULL: email: 99.6% (3 failed of 718)
+2026-06-09 10:37:06,837 [INFO]   [PASS] NOT NULL: first_name: 100.0% (0 failed of 718)
+2026-06-09 10:37:06,838 [INFO]   [PASS] NOT NULL: region: 95.5% (32 failed of 718)
+2026-06-09 10:37:06,838 [INFO]   [PASS] UNIQUE: email: 99.9% (1 failed of 715)
+2026-06-09 10:37:06,838 [INFO]   [PASS] REGEX: email: 99.4% (4 failed of 715)
+2026-06-09 10:37:06,838 [INFO]   [PASS] VALUES IN SET: region: 100.0% (0 failed of 686)
+2026-06-09 10:37:06,838 [INFO]   [PASS] DATE RANGE: registration_date: 100.0% (0 failed of 706)
+2026-06-09 10:37:06,838 [INFO] ============================================================
+2026-06-09 10:37:06,838 [INFO]   OVERALL: ALL CHECKS PASSED
+2026-06-09 10:37:06,838 [INFO] ============================================================
+2026-06-09 10:37:06,838 [INFO] STEP 5: Generating EDA visualization...
+2026-06-09 10:37:08,380 [INFO]   EDA report saved: data\processed\customer_quality_report.png
+2026-06-09 10:37:08,381 [INFO] STEP 6: Exporting Results
+2026-06-09 10:37:08,482 [INFO]   Parquet export: data\processed\golden_customers.parquet (17.6 KB)
+2026-06-09 10:37:08,492 [INFO]   CSV export: data\processed\golden_customers.csv
+2026-06-09 10:37:08,494 [INFO]   Quality report: data\processed\quality_report.csv
+2026-06-09 10:37:08,495 [INFO] ============================================================
+2026-06-09 10:37:08,495 [INFO] PIPELINE COMPLETE
+2026-06-09 10:37:08,495 [INFO]   Input records:           1,750
+2026-06-09 10:37:08,495 [INFO]   Output (golden) records: 718
+2026-06-09 10:37:08,495 [INFO]   Duplicates removed:      1,032
+2026-06-09 10:37:08,496 [INFO]   Quality checks passed:   7/7
+2026-06-09 10:37:08,497 [INFO]   Duration:                3.2s
+2026-06-09 10:37:08,497 [INFO] ============================================================
+2026-06-09 10:39:11,748 [INFO] Generated website CSV: 1020 records
+2026-06-09 10:39:11,871 [INFO] Generated CRM JSON: 500 records
+2026-06-09 10:39:11,902 [INFO] Generated ERP fixed-width: 250 records
+2026-06-09 10:39:11,902 [INFO] Synthetic data generation complete.
+2026-06-09 10:39:11,903 [INFO] ============================================================
+2026-06-09 10:39:11,903 [INFO] SHOPSTREAM CUSTOMER DATA QUALITY PIPELINE
+2026-06-09 10:39:11,903 [INFO] Run started: 2026-06-09T10:39:11.903283
+2026-06-09 10:39:11,903 [INFO] ============================================================
+2026-06-09 10:39:11,903 [INFO] ============================================================
+2026-06-09 10:39:11,903 [INFO] STEP 1: Data Ingestion
+2026-06-09 10:39:11,903 [INFO] Ingesting website CSV: data\raw\website_customers.csv
+2026-06-09 10:39:11,932 [INFO]   Removed 20 test accounts
+2026-06-09 10:39:11,933 [INFO]   Ingested 1000 records from website CSV
+2026-06-09 10:39:11,934 [INFO] Ingesting CRM JSON: data\raw\crm_export.json
+2026-06-09 10:39:11,943 [INFO]   Ingested 500 records from CRM JSON
+2026-06-09 10:39:11,945 [INFO] Ingesting ERP fixed-width: data\raw\erp_customers.txt
+2026-06-09 10:39:11,954 [INFO]   Ingested 250 records from ERP
+2026-06-09 10:39:11,955 [INFO] Total records combined: 1750
+2026-06-09 10:39:11,958 [INFO]   website: 1000 records
+2026-06-09 10:39:11,959 [INFO]   crm: 500 records
+2026-06-09 10:39:11,959 [INFO]   erp: 250 records
+2026-06-09 10:39:11,959 [INFO] STEP 2: Cleaning & Standardization
+2026-06-09 10:39:11,988 [INFO]   Invalid emails: 7
+2026-06-09 10:39:11,989 [INFO]   Null regions after standardization: 271
+2026-06-09 10:39:11,989 [INFO]   Records after cleaning: 1750
+2026-06-09 10:39:11,989 [INFO] STEP 3: Deduplication
+2026-06-09 10:39:13,378 [INFO]   Records before deduplication: 1750
+2026-06-09 10:39:13,378 [INFO]   Duplicate records removed: 1032
+2026-06-09 10:39:13,378 [INFO]   Records after deduplication: 718
+2026-06-09 10:39:13,379 [INFO] STEP 4: Quality Validation
+2026-06-09 10:39:13,385 [INFO] ============================================================
+2026-06-09 10:39:13,385 [INFO] DATA QUALITY REPORT
+2026-06-09 10:39:13,385 [INFO] ============================================================
+2026-06-09 10:39:13,385 [INFO]   [PASS] NOT NULL: email: 99.6% (3 failed of 718)
+2026-06-09 10:39:13,385 [INFO]   [PASS] NOT NULL: first_name: 100.0% (0 failed of 718)
+2026-06-09 10:39:13,385 [INFO]   [PASS] NOT NULL: region: 95.5% (32 failed of 718)
+2026-06-09 10:39:13,386 [INFO]   [PASS] UNIQUE: email: 99.9% (1 failed of 715)
+2026-06-09 10:39:13,386 [INFO]   [PASS] REGEX: email: 99.4% (4 failed of 715)
+2026-06-09 10:39:13,386 [INFO]   [PASS] VALUES IN SET: region: 100.0% (0 failed of 686)
+2026-06-09 10:39:13,386 [INFO]   [PASS] DATE RANGE: registration_date: 100.0% (0 failed of 706)
+2026-06-09 10:39:13,386 [INFO] ============================================================
+2026-06-09 10:39:13,386 [INFO]   OVERALL: ALL CHECKS PASSED
+2026-06-09 10:39:13,386 [INFO] ============================================================
+2026-06-09 10:39:13,386 [INFO] STEP 5: Generating EDA visualization...
+2026-06-09 10:39:14,312 [INFO]   EDA report saved: data\processed\customer_quality_report.png
+2026-06-09 10:39:14,312 [INFO] STEP 6: Exporting Results
+2026-06-09 10:39:14,358 [INFO]   Parquet export: data\processed\golden_customers.parquet (17.6 KB)
+2026-06-09 10:39:14,368 [INFO]   CSV export: data\processed\golden_customers.csv
+2026-06-09 10:39:14,369 [INFO]   Quality report: data\processed\quality_report.csv
+2026-06-09 10:39:14,369 [INFO] ============================================================
+2026-06-09 10:39:14,369 [INFO] PIPELINE COMPLETE
+2026-06-09 10:39:14,370 [INFO]   Input records:           1,750
+2026-06-09 10:39:14,370 [INFO]   Output (golden) records: 718
+2026-06-09 10:39:14,370 [INFO]   Duplicates removed:      1,032
+2026-06-09 10:39:14,370 [INFO]   Quality checks passed:   7/7
+2026-06-09 10:39:14,370 [INFO]   Duration:                2.5s
+2026-06-09 10:39:14,370 [INFO] ============================================================
+2026-06-09 10:54:29,229 [INFO] Generated website CSV: 1020 records
+2026-06-09 10:54:29,322 [INFO] Generated CRM JSON: 500 records
+2026-06-09 10:54:29,387 [INFO] Generated ERP fixed-width: 250 records
+2026-06-09 10:54:29,387 [INFO] Synthetic data generation complete.
+2026-06-09 10:54:29,388 [INFO] ============================================================
+2026-06-09 10:54:29,388 [INFO] SHOPSTREAM CUSTOMER DATA QUALITY PIPELINE
+2026-06-09 10:54:29,388 [INFO] Run started: 2026-06-09T10:54:29.388313
+2026-06-09 10:54:29,388 [INFO] ============================================================
+2026-06-09 10:54:29,388 [INFO] ============================================================
+2026-06-09 10:54:29,388 [INFO] STEP 1: Data Ingestion
+2026-06-09 10:54:29,388 [INFO] Ingesting website CSV: data\raw\website_customers.csv
+2026-06-09 10:54:29,425 [INFO]   Removed 20 test accounts
+2026-06-09 10:54:29,427 [INFO]   Ingested 1000 records from website CSV
+2026-06-09 10:54:29,428 [INFO] Ingesting CRM JSON: data\raw\crm_export.json
+2026-06-09 10:54:29,440 [INFO]   Ingested 500 records from CRM JSON
+2026-06-09 10:54:29,442 [INFO] Ingesting ERP fixed-width: data\raw\erp_customers.txt
+2026-06-09 10:54:29,458 [INFO]   Ingested 250 records from ERP
+2026-06-09 10:54:29,460 [INFO] Total records combined: 1750
+2026-06-09 10:54:29,464 [INFO]   website: 1000 records
+2026-06-09 10:54:29,465 [INFO]   crm: 500 records
+2026-06-09 10:54:29,465 [INFO]   erp: 250 records
+2026-06-09 10:54:29,465 [INFO] STEP 2: Cleaning & Standardization
+2026-06-09 10:54:29,486 [INFO]   Invalid emails: 7
+2026-06-09 10:54:29,486 [INFO]   Null regions after standardization: 271
+2026-06-09 10:54:29,486 [INFO]   Records after cleaning: 1750
+2026-06-09 10:54:29,486 [INFO] STEP 3: Deduplication
+2026-06-09 10:54:31,020 [INFO]   Records before deduplication: 1750
+2026-06-09 10:54:31,021 [INFO]   Duplicate records removed: 1032
+2026-06-09 10:54:31,021 [INFO]   Records after deduplication: 718
+2026-06-09 10:54:31,021 [INFO] STEP 4: Quality Validation
+2026-06-09 10:54:31,028 [INFO] ============================================================
+2026-06-09 10:54:31,028 [INFO] DATA QUALITY REPORT
+2026-06-09 10:54:31,029 [INFO] ============================================================
+2026-06-09 10:54:31,029 [INFO]   [PASS] NOT NULL: email: 99.6% (3 failed of 718)
+2026-06-09 10:54:31,029 [INFO]   [PASS] NOT NULL: first_name: 100.0% (0 failed of 718)
+2026-06-09 10:54:31,029 [INFO]   [PASS] NOT NULL: region: 95.5% (32 failed of 718)
+2026-06-09 10:54:31,029 [INFO]   [PASS] UNIQUE: email: 99.9% (1 failed of 715)
+2026-06-09 10:54:31,029 [INFO]   [PASS] REGEX: email: 99.4% (4 failed of 715)
+2026-06-09 10:54:31,029 [INFO]   [PASS] VALUES IN SET: region: 100.0% (0 failed of 686)
+2026-06-09 10:54:31,029 [INFO]   [PASS] DATE RANGE: registration_date: 100.0% (0 failed of 706)
+2026-06-09 10:54:31,030 [INFO] ============================================================
+2026-06-09 10:54:31,030 [INFO]   OVERALL: ALL CHECKS PASSED
+2026-06-09 10:54:31,030 [INFO] ============================================================
+2026-06-09 10:54:31,030 [INFO] STEP 5: Generating EDA visualization...
+2026-06-09 10:54:32,276 [INFO]   EDA report saved: data\processed\customer_quality_report.png
+2026-06-09 10:54:32,277 [INFO] STEP 6: Exporting Results
+2026-06-09 10:54:32,361 [INFO]   Parquet export: data\processed\golden_customers.parquet (17.6 KB)
+2026-06-09 10:54:32,384 [INFO]   CSV export: data\processed\golden_customers.csv
+2026-06-09 10:54:32,388 [INFO]   Quality report: data\processed\quality_report.csv
+2026-06-09 10:54:32,389 [INFO] ============================================================
+2026-06-09 10:54:32,389 [INFO] PIPELINE COMPLETE
+2026-06-09 10:54:32,389 [INFO]   Input records:           1,750
+2026-06-09 10:54:32,389 [INFO]   Output (golden) records: 718
+2026-06-09 10:54:32,389 [INFO]   Duplicates removed:      1,032
+2026-06-09 10:54:32,390 [INFO]   Quality checks passed:   7/7
+2026-06-09 10:54:32,391 [INFO]   Duration:                3.0s
+2026-06-09 10:54:32,391 [INFO] ============================================================

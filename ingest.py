@@ -7,6 +7,19 @@ import requests
 from config import CONFIG, STANDARD_SCHEMA, logger
 
 
+def _normalize_columns(df):
+    """Lowercase, strip, and snake_case all column names."""
+    df.columns = (
+        df.columns
+        .str.strip()
+        .str.lower()
+        .str.replace(r"[^\w]", "_", regex=True)
+        .str.replace(r"_+", "_", regex=True)
+        .str.strip("_")
+    )
+    return df
+
+
 def ingest_website_csv(filepath):
     """
     Ingest the website registration CSV export.
@@ -20,22 +33,10 @@ def ingest_website_csv(filepath):
         dtype={"Phone": str},
         parse_dates=["Registration Date"],
         na_values=["", "N/A", "null", "NULL", "none", "NaN"],
-    )
-
-    df.columns = (
-        df.columns
-        .str.strip()
-        .str.lower()
-        .str.replace(r"[^\w]", "_", regex=True)
-        .str.replace(r"_+", "_", regex=True)
-        .str.strip("_")
-    )
+    ).pipe(_normalize_columns)
 
     df = df.rename(columns={
         "customeremail": "email",
-        "first_name": "first_name",
-        "last_name": "last_name",
-        "registration_date": "registration_date",
         "optout": "opt_out",
     })
 
@@ -157,7 +158,7 @@ def ingest_erp_fixed_width(filepath):
     return df
 
 
-def align_schema(df, source_name):
+def align_schema(df):
     """Align a source DataFrame to STANDARD_SCHEMA. Missing cols → NaN, extras dropped."""
     for col in STANDARD_SCHEMA:
         if col not in df.columns:
@@ -173,13 +174,13 @@ def ingest_all_sources():
     frames = []
 
     website_df = ingest_website_csv(CONFIG["input_dir"] / "website_customers.csv")
-    frames.append(align_schema(website_df, "website"))
+    frames.append(align_schema(website_df))
 
     crm_df = ingest_crm_json(CONFIG["input_dir"] / "crm_export.json")
-    frames.append(align_schema(crm_df, "crm"))
+    frames.append(align_schema(crm_df))
 
     erp_df = ingest_erp_fixed_width(CONFIG["input_dir"] / "erp_customers.txt")
-    frames.append(align_schema(erp_df, "erp"))
+    frames.append(align_schema(erp_df))
 
     combined = pd.concat(frames, ignore_index=True)
     logger.info(f"Total records combined: {len(combined)}")
