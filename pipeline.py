@@ -9,13 +9,13 @@ Run: python pipeline.py
 """
 from datetime import datetime
 
-from cleaning import clean_dataframe
+from clean import clean_dataframe
 from config import CONFIG, logger
-from data_generation import generate_synthetic_data
-from deduplication import deduplicate_customers
-from ingestion import ingest_all_sources
-from validation import run_quality_checks
-from visualization import generate_eda_report
+from dedup import deduplicate_customers
+from ingest import ingest_all_sources
+from tests.generate_data import generate_synthetic_data
+from validate import run_quality_checks
+from visualize import generate_eda_report
 
 
 def run_pipeline():
@@ -34,7 +34,7 @@ def run_pipeline():
     deduped = deduplicate_customers(cleaned)
 
     # Uncomment to enable AI region inference (requires ANTHROPIC_API_KEY):
-    # from llm_inference import infer_region_with_llm
+    # from enrich import infer_region_with_llm
     # deduped = infer_region_with_llm(deduped)
 
     logger.info("STEP 4: Quality Validation")

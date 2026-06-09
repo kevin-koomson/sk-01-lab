@@ -1,0 +1,57 @@
+2026-06-09 09:56:28,269 [INFO] Generated website CSV: 1020 records
+2026-06-09 09:56:28,412 [INFO] Generated CRM JSON: 500 records
+2026-06-09 09:56:28,485 [INFO] Generated ERP fixed-width: 250 records
+2026-06-09 09:56:28,485 [INFO] Synthetic data generation complete.
+2026-06-09 09:56:28,485 [INFO] ============================================================
+2026-06-09 09:56:28,486 [INFO] SHOPSTREAM CUSTOMER DATA QUALITY PIPELINE
+2026-06-09 09:56:28,486 [INFO] Run started: 2026-06-09T09:56:28.485773
+2026-06-09 09:56:28,486 [INFO] ============================================================
+2026-06-09 09:56:28,486 [INFO] ============================================================
+2026-06-09 09:56:28,486 [INFO] STEP 1: Data Ingestion
+2026-06-09 09:56:28,487 [INFO] Ingesting website CSV: data\raw\website_customers.csv
+2026-06-09 09:56:28,539 [INFO]   Removed 20 test accounts
+2026-06-09 09:56:28,541 [INFO]   Ingested 1000 records from website CSV
+2026-06-09 09:56:28,545 [INFO] Ingesting CRM JSON: data\raw\crm_export.json
+2026-06-09 09:56:28,569 [INFO]   Ingested 500 records from CRM JSON
+2026-06-09 09:56:28,575 [INFO] Ingesting ERP fixed-width: data\raw\erp_customers.txt
+2026-06-09 09:56:28,608 [INFO]   Ingested 250 records from ERP
+2026-06-09 09:56:28,612 [INFO] Total records combined: 1750
+2026-06-09 09:56:28,619 [INFO]   website: 1000 records
+2026-06-09 09:56:28,621 [INFO]   crm: 500 records
+2026-06-09 09:56:28,622 [INFO]   erp: 250 records
+2026-06-09 09:56:28,622 [INFO] STEP 2: Cleaning & Standardization
+2026-06-09 09:56:28,661 [INFO]   Invalid emails: 7
+2026-06-09 09:56:28,661 [INFO]   Null regions after standardization: 271
+2026-06-09 09:56:28,661 [INFO]   Records after cleaning: 1750
+2026-06-09 09:56:28,662 [INFO] STEP 3: Deduplication
+2026-06-09 09:56:32,887 [INFO]   Records before deduplication: 1750
+2026-06-09 09:56:32,888 [INFO]   Duplicate records removed: 1032
+2026-06-09 09:56:32,888 [INFO]   Records after deduplication: 718
+2026-06-09 09:56:32,888 [INFO] STEP 4: Quality Validation
+2026-06-09 09:56:32,902 [INFO] ============================================================
+2026-06-09 09:56:32,902 [INFO] DATA QUALITY REPORT
+2026-06-09 09:56:32,902 [INFO] ============================================================
+2026-06-09 09:56:32,902 [INFO]   [PASS] NOT NULL: email: 99.6% (3 failed of 718)
+2026-06-09 09:56:32,902 [INFO]   [PASS] NOT NULL: first_name: 100.0% (0 failed of 718)
+2026-06-09 09:56:32,902 [INFO]   [PASS] NOT NULL: region: 95.5% (32 failed of 718)
+2026-06-09 09:56:32,902 [INFO]   [PASS] UNIQUE: email: 99.9% (1 failed of 715)
+2026-06-09 09:56:32,902 [INFO]   [PASS] REGEX: email: 99.4% (4 failed of 715)
+2026-06-09 09:56:32,902 [INFO]   [PASS] VALUES IN SET: region: 100.0% (0 failed of 686)
+2026-06-09 09:56:32,903 [INFO]   [PASS] DATE RANGE: registration_date: 100.0% (0 failed of 706)
+2026-06-09 09:56:32,903 [INFO] ============================================================
+2026-06-09 09:56:32,903 [INFO]   OVERALL: ALL CHECKS PASSED
+2026-06-09 09:56:32,904 [INFO] ============================================================
+2026-06-09 09:56:32,904 [INFO] STEP 5: Generating EDA visualization...
+2026-06-09 09:56:36,310 [INFO]   EDA report saved: data\processed\customer_quality_report.png
+2026-06-09 09:56:36,310 [INFO] STEP 6: Exporting Results
+2026-06-09 09:56:36,406 [INFO]   Parquet export: data\processed\golden_customers.parquet (17.6 KB)
+2026-06-09 09:56:36,427 [INFO]   CSV export: data\processed\golden_customers.csv
+2026-06-09 09:56:36,430 [INFO]   Quality report: data\processed\quality_report.csv
+2026-06-09 09:56:36,431 [INFO] ============================================================
+2026-06-09 09:56:36,431 [INFO] PIPELINE COMPLETE
+2026-06-09 09:56:36,431 [INFO]   Input records:           1,750
+2026-06-09 09:56:36,431 [INFO]   Output (golden) records: 718
+2026-06-09 09:56:36,431 [INFO]   Duplicates removed:      1,032
+2026-06-09 09:56:36,432 [INFO]   Quality checks passed:   7/7
+2026-06-09 09:56:36,432 [INFO]   Duration:                7.9s
+2026-06-09 09:56:36,432 [INFO] ============================================================
